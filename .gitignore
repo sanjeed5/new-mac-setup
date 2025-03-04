@@ -124,5 +124,3 @@ config/mac_backup/ssh/
 config/mac_backup/docker/
 config/mac_backup/macos/
 config/mac_backup/git/.gitconfig
-
-config/
