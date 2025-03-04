@@ -2,6 +2,8 @@
 
 This repository contains scripts to automate the setup of a new Mac for development. It's designed to be modular, allowing you to pick and choose which components to install.
 
+![Demo](demo.gif)
+
 ## Features
 
 - **Homebrew**: Package manager for macOS
