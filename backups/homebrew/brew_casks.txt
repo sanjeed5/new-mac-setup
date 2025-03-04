@@ -1,0 +1,10 @@
+android-file-transfer
+flameshot
+google-cloud-sdk
+neardrop
+ngrok
+only-switch
+orbstack
+platypus
+stats
+stretchly
