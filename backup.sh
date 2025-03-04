@@ -74,6 +74,12 @@ mkdir -p backups
 mkdir -p backups/public
 mkdir -p backups/private
 
+# Clear existing backups to avoid mixing with new ones
+print_info "Clearing existing backups..."
+rm -rf backups/public/*
+rm -rf backups/private/*
+print_success "Cleared existing backups"
+
 # Check if running for the first time and create script files
 if [ ! -f scripts/backup_ohmyzsh.sh ] || [ ! -f scripts/backup_mac_settings.sh ]; then
     print_info "First run detected. Creating script files..."

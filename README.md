@@ -197,11 +197,8 @@ The setup script:
 ├── backup.sh              # Main backup script
 ├── setup.sh               # Main setup script
 ├── backups/               # All backups are stored here
-│   ├── homebrew/         # Homebrew packages and Brewfile
-│   ├── vscode/           # VSCode settings and extensions
-│   ├── ohmyzsh/          # Oh My Zsh configuration
-│   ├── git/              # Git configuration
-│   └── macos/            # macOS preferences
+│   ├── public/           # Public-safe backups
+│   └── private/          # Private/sensitive backups
 └── scripts/              # Individual scripts
     ├── backup_*.sh       # Individual backup scripts
     ├── install_*.sh      # Installation scripts
@@ -209,36 +206,14 @@ The setup script:
     └── setup_*.sh        # Setup scripts
 ```
 
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. 
+
 ## License
 
 MIT
 
 ## Acknowledgements
 
-This project was inspired by various dotfiles repositories and setup scripts from the developer community.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. 
-
-## Example Setup
-
-A basic example of configuration files and backups is available in the `example-setup` directory. This can serve as a reference for how the backup and configuration system works.
-
-### Using the Example Setup
-
-If you want to see an example of how the system works before creating your own:
-
-```bash
-# Explore the example-setup directory to see the example configurations and backups
-ls -la example-setup
-
-# You can copy these example files to the main directory structure if you want to use them
-# For example, to use the example configurations:
-cp -r example-setup/config/* config/
-
-# Or to use the example public backups:
-cp -r example-setup/backups/public/* backups/public/
-```
-
-The example provides a starting point to understand how both the configuration and backup structures work. You can use these files as-is or modify them to suit your needs. 
+This project was inspired by various dotfiles repositories and setup scripts from the developer community. 
