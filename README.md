@@ -268,3 +268,25 @@ This project was inspired by various dotfiles repositories and setup scripts fro
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. 
+
+## Example Setup
+
+A basic public backup of Oh My Zsh and other configurations is available in the `sanjeeds-setup` branch. This can serve as a reference for how the backup system works.
+
+### Checking Out the Example Setup
+
+If you want to see an example of how the backup system works before creating your own:
+
+```bash
+# Clone the repository
+git clone https://github.com/sanjeed5/new-mac-setup.git
+cd new-mac-setup
+
+# Check out the example setup branch
+git checkout sanjeeds-setup
+
+# Explore the backups/public directory to see the example configuration
+ls -la backups/public
+```
+
+Note that this example is primarily for reference. The main use case of this repository is still for you to backup and restore your own configurations. The example just provides a starting point to understand how the backup structure works. 
