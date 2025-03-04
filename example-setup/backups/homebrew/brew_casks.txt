@@ -1,8 +1,0 @@
-flameshot
-google-cloud-sdk
-neardrop
-ngrok
-orbstack
-stats
-stretchly
-obsidian
