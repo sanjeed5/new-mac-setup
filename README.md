@@ -12,8 +12,9 @@ This repository contains scripts to automate the setup of a new Mac for developm
 - **Git Configuration**: Set up Git with useful aliases and configurations
 - **Node.js Setup**: Install nvm, Node.js, and pnpm
 - **Python Setup**: Install pyenv, Python versions, and uv
-- **macOS Preferences**: Configure macOS settings for development
 - **Oh My Zsh Backup**: Backup and restore your Oh My Zsh configuration
+- **macOS Preferences**: Configure macOS settings for development
+- **VSCode Setup**: Backup and restore VSCode settings, extensions, and snippets
 - **Comprehensive Mac Backup**: Backup all essential settings from your Mac
 - **Security-Focused Design**: Clear separation between public-safe and private backups
 
@@ -80,9 +81,12 @@ Since this repository contains scripts that will backup your personal settings, 
    ./backup.sh
    ```
 
-4. The script will guide you through backing up different components and will automatically separate:
-   - **Public-safe backups**: Configurations that don't contain sensitive information
-   - **Private backups**: Configurations that may contain sensitive information
+4. The script will guide you through backing up different components into the `backups/` directory:
+   - `backups/homebrew/`: Homebrew packages and Brewfile
+   - `backups/vscode/`: VSCode settings, keybindings, snippets, and extensions
+   - `backups/ohmyzsh/`: Oh My Zsh configuration, themes, and plugins
+   - `backups/git/`: Git configuration and global settings
+   - `backups/macos/`: macOS system preferences and settings
 
 5. If using a repository:
    ```bash
@@ -129,25 +133,20 @@ Since this repository contains scripts that will backup your personal settings, 
 
 This repository is designed with security in mind:
 
-### Public vs. Private Backups
+### Backup Directory Structure
 
-The backup script automatically separates backups into two categories:
+All backups are stored in the `backups/` directory with the following organization:
 
-1. **Public-Safe Backups** (in `backups/public/`):
-   - Oh My Zsh configuration (themes, plugins)
-   - Homebrew packages list
-   - Node.js global packages list
-   - Python packages list
-   - VSCode extensions list
+1. **Public-Safe Backups**:
+   - `backups/homebrew/`: Brewfile and package lists
+   - `backups/vscode/extensions.txt`: VSCode extensions list
+   - `backups/ohmyzsh/`: Oh My Zsh themes and plugins
    - Other non-sensitive configurations
 
-2. **Private Backups** (in `backups/private/`):
-   - SSH keys and configuration
-   - Git global configuration
-   - VSCode settings
-   - Database configurations
-   - Docker credentials
-   - Browser profiles
+2. **Private/Sensitive Backups**:
+   - `backups/git/`: Git configuration (may contain email)
+   - `backups/vscode/settings.json`: VSCode settings (may contain tokens)
+   - `backups/macos/`: System preferences (may contain personal settings)
    - Other potentially sensitive data
 
 ### Security Warnings
@@ -160,7 +159,7 @@ The backup script automatically separates backups into two categories:
 
 ### Security Recommendations
 
-- **Public Repositories**: Only commit the `backups/public/` directory
+- **Public Repositories**: Only commit non-sensitive backups
 - **Private Repositories**: You may commit both directories, but review files first
 - **Highly Sensitive Data**: Consider keeping SSH keys and credentials completely separate from any repository
 - **Review Before Committing**: Always check files for sensitive information before committing
@@ -172,13 +171,11 @@ The backup script automatically separates backups into two categories:
 
 The backup script:
 
-1. Creates necessary directories for storing backups
+1. Creates necessary directories in `backups/`
 2. Presents options for backing up different components
 3. Automatically categorizes backups as public-safe or private/sensitive
 4. Provides multiple security warnings for sensitive data
 5. Creates timestamped archives of your backups
-
-The script is interactive and will guide you through the backup process with clear prompts and security warnings.
 
 ### Setup Script (`setup.sh`)
 
@@ -187,76 +184,29 @@ The setup script:
 1. Installs core development tools (Homebrew, packages from Brewfile)
 2. Sets up your shell environment (Zsh, Oh My Zsh, plugins)
 3. Configures development tools (Node.js, Python)
-4. Sets up Git with your information (prompts for username and email)
+4. Sets up Git with your information
 5. Configures macOS preferences for development
-6. Restores settings from your backups (if available)
-
-The script is interactive and will prompt you for necessary information during the setup process.
-
-## Customization
-
-### Brewfile
-
-The `Brewfile` contains all the packages, applications, and VS Code extensions to be installed via Homebrew. You can edit this file to add or remove packages according to your needs.
-
-### Scripts
-
-The repository is organized around two main scripts:
-
-- `backup.sh`: The main backup script that handles backing up all your Mac settings
-- `setup.sh`: The main setup script that handles installing and configuring your new Mac
-
-These main scripts call individual component scripts in the `scripts` directory, but you don't need to run these component scripts directly. The modular design allows you to select which components to backup or install when running the main scripts.
-
-## What's Included
-
-### Shell Setup
-
-- Zsh as the default shell
-- Oh My Zsh for shell customization
-- Powerlevel10k theme
-- Useful plugins (syntax highlighting, autosuggestions, etc.)
-- **Import/Backup functionality**: Transfer your Oh My Zsh settings from your old machine
-
-### Comprehensive Mac Settings Backup
-
-The `backup.sh` script creates a complete backup of your essential Mac settings, separated into public and private categories.
-
-### Git Configuration
-
-- User information setup
-- Useful aliases
-- Global .gitignore file
-- Credential helper configuration
-
-### Node.js Setup
-
-- nvm for Node.js version management
-- pnpm as the preferred package manager
-- Common global packages
-
-### Python Setup
-
-- pyenv for Python version management
-- uv for package management
-- Common Python packages
+6. Restores settings from your backups in the `backups/` directory
 
 ## Directory Structure
 
 ```
 .
 ├── Brewfile                # Homebrew packages and applications
-├── README.md               # This file
-├── backup.sh               # Main backup script
-├── setup.sh                # Main setup script
-├── backups/                # Backup storage
-│   ├── public/             # Public-safe backups
-│   └── private/            # Private, sensitive backups
-└── scripts/                # Setup and utility scripts
-    ├── backup_*.sh         # Individual backup scripts
-    ├── install_*.sh        # Installation scripts
-    ├── restore_*.sh        # Restoration scripts
-    └── setup_*.sh          # Setup scripts
+├── README.md              # This file
+├── backup.sh              # Main backup script
+├── setup.sh               # Main setup script
+├── backups/               # All backups are stored here
+│   ├── homebrew/         # Homebrew packages and Brewfile
+│   ├── vscode/           # VSCode settings and extensions
+│   ├── ohmyzsh/          # Oh My Zsh configuration
+│   ├── git/              # Git configuration
+│   └── macos/            # macOS preferences
+└── scripts/              # Individual scripts
+    ├── backup_*.sh       # Individual backup scripts
+    ├── install_*.sh      # Installation scripts
+    ├── restore_*.sh      # Restoration scripts
+    └── setup_*.sh        # Setup scripts
 ```
 
 ## License
