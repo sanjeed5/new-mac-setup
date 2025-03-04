@@ -27,8 +27,8 @@ This repository contains scripts to automate the setup of a new Mac for developm
 
 This repository is designed to be used in two phases:
 
-1. **Backup Phase (On Your Old Mac)**: First, run the backup script on your existing Mac to save your settings, configurations, and preferences.
-2. **Setup Phase (On Your New Mac)**: Then, use this repository on your new Mac and run the setup script to restore your environment.
+1. **Backup Phase (On Your Old Mac)**: Run the backup script on your existing Mac to save your settings, configurations, and preferences.
+2. **Setup Phase (On Your New Mac)**: Use this repository on your new Mac and run the setup script to restore your environment.
 
 ### Repository Setup Options
 
@@ -121,7 +121,7 @@ Since this repository contains scripts that will backup your personal settings, 
    ./setup.sh
    ```
 
-4. Follow the prompts to select which components to install and restore from your backup.
+4. Follow the prompts to select which components to install and restore from your backup. The script will ask for necessary information (like Git username and email) during the setup process.
 
 ## Security Considerations
 
@@ -145,9 +145,16 @@ The backup script automatically separates backups into two categories:
    - VSCode settings
    - Database configurations
    - Docker credentials
-   - VSCode settings (may contain tokens)
    - Browser profiles
    - Other potentially sensitive data
+
+### Security Warnings
+
+**IMPORTANT**: Never commit sensitive information to a public repository, including:
+- Private SSH keys
+- API tokens or passwords
+- Personal credentials
+- Database connection strings with passwords
 
 ### Security Recommendations
 
@@ -155,6 +162,34 @@ The backup script automatically separates backups into two categories:
 - **Private Repositories**: You may commit both directories, but review files first
 - **Highly Sensitive Data**: Consider keeping SSH keys and credentials completely separate from any repository
 - **Review Before Committing**: Always check files for sensitive information before committing
+- **Use Environment Variables**: Consider using environment variables or a secure vault for sensitive information
+
+## How the Scripts Work
+
+### Backup Script (`backup.sh`)
+
+The backup script:
+
+1. Creates necessary directories for storing backups
+2. Presents options for backing up different components
+3. Automatically categorizes backups as public-safe or private/sensitive
+4. Provides multiple security warnings for sensitive data
+5. Creates timestamped archives of your backups
+
+The script is interactive and will guide you through the backup process with clear prompts and security warnings.
+
+### Setup Script (`setup.sh`)
+
+The setup script:
+
+1. Installs core development tools (Homebrew, packages from Brewfile)
+2. Sets up your shell environment (Zsh, Oh My Zsh, plugins)
+3. Configures development tools (Node.js, Python)
+4. Sets up Git with your information (prompts for username and email)
+5. Configures macOS preferences for development
+6. Restores settings from your backups (if available)
+
+The script is interactive and will prompt you for necessary information during the setup process.
 
 ## Customization
 
@@ -183,25 +218,7 @@ These main scripts call individual component scripts in the `scripts` directory,
 
 ### Comprehensive Mac Settings Backup
 
-The `backup.sh` script creates a complete backup of your essential Mac settings, separated into public and private categories:
-
-1. **Public-Safe Backups**:
-   - Homebrew packages list
-   - npm global packages
-   - Python packages list
-   - VSCode extensions list
-   - Shell themes and plugins
-   - Application preferences (non-sensitive)
-
-2. **Private Backups**:
-   - SSH keys and configuration
-   - Git global configuration
-   - VSCode settings
-   - Database configurations
-   - Docker credentials
-   - Browser profiles
-   - macOS preferences
-   - And more sensitive data
+The `backup.sh` script creates a complete backup of your essential Mac settings, separated into public and private categories.
 
 ### Git Configuration
 
@@ -222,28 +239,6 @@ The `backup.sh` script creates a complete backup of your essential Mac settings,
 - uv for package management
 - Common Python packages
 
-## License
-
-MIT
-
-## Security
-
-This repository contains scripts that may collect sensitive information during backup operations. Please read the security guidelines in this README before using these scripts.
-
-Key security points:
-- Never commit private SSH keys or credentials
-- Use example configuration files as templates
-- Review all files before committing to a repository
-- Consider secure alternatives for truly sensitive information
-
-## Acknowledgements
-
-This project was inspired by various dotfiles repositories and setup scripts from the developer community.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## Directory Structure
 
 ```
@@ -255,13 +250,21 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ├── backups/                # Backup storage
 │   ├── public/             # Public-safe backups
 │   └── private/            # Private, sensitive backups
-├── config/                 # Configuration files
-│   ├── git/                # Git configuration
-│   ├── shell/              # Shell configuration files
-│   └── vscode/             # VS Code settings and extensions
 └── scripts/                # Setup and utility scripts
     ├── backup_*.sh         # Individual backup scripts
     ├── install_*.sh        # Installation scripts
     ├── restore_*.sh        # Restoration scripts
     └── setup_*.sh          # Setup scripts
-``` 
+```
+
+## License
+
+MIT
+
+## Acknowledgements
+
+This project was inspired by various dotfiles repositories and setup scripts from the developer community.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. 

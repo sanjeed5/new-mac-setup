@@ -53,6 +53,7 @@ echo -e "${GREEN}=================================${NC}"
 echo
 echo "This script will help you set up your new Mac for development."
 echo "You can choose which components to install."
+echo "The script will prompt you for necessary information during the setup process."
 echo
 
 # Create necessary directories
@@ -70,6 +71,8 @@ if [ ! -f scripts/install_homebrew.sh ]; then
     touch scripts/setup_node.sh
     touch scripts/setup_python.sh
     touch scripts/setup_macos_preferences.sh
+    touch scripts/restore_public_settings.sh
+    touch scripts/restore_private_settings.sh
     
     # Make all scripts executable
     chmod +x scripts/*.sh
