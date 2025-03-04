@@ -1,0 +1,128 @@
+# ===== SYSTEM FILES =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ===== DEVELOPMENT FILES =====
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.venv
+venv/
+ENV/
+
+# ===== SENSITIVE INFORMATION =====
+# SSH and credentials
+config/mac_backup/ssh/id_*
+!config/mac_backup/ssh/id_*.pub
+!config/mac_backup/ssh/id_*.example
+config/mac_backup/aws/credentials
+config/mac_backup/kubernetes/config
+config/mac_backup/**/.*_history
+config/mac_backup/**/*.key
+config/mac_backup/**/*.pem
+config/mac_backup/**/*.p12
+config/mac_backup/**/*.pfx
+config/mac_backup/**/*.keystore
+config/mac_backup/**/*.jks
+config/mac_backup/**/known_hosts
+config/mac_backup/**/*_rsa
+config/mac_backup/**/*_dsa
+config/mac_backup/**/*_ecdsa
+config/mac_backup/**/*_ed25519
+
+# Environment and secrets
+**/.env
+**/.env.*
+**/credentials.json
+**/client_secret*.json
+**/service-account*.json
+**/*.password
+**/*.token
+**/*.secret
+**/secrets.*
+**/secure_notes.*
+
+# ===== LARGE FILES =====
+# Large files and directories
+config/mac_backup/**/*.zip
+config/mac_backup/**/*.tar
+config/mac_backup/**/*.gz
+config/mac_backup/**/*.rar
+config/mac_backup/**/*.7z
+config/mac_backup/**/*.iso
+config/mac_backup/**/*.dmg
+config/mac_backup/**/*.pkg
+config/mac_backup/**/*.app
+
+# ===== PERSONAL BACKUP FILES =====
+# REMOVE THIS SECTION FOR PRIVATE REPOSITORIES
+# Personal data and backups
+config/mac_backup/*
+
+# ===== SPECIFIC SENSITIVE DIRECTORIES =====
+# These directories contain sensitive information and should not be committed
+# Even if you remove the PERSONAL BACKUP FILES section above, keep these exclusions
+config/mac_backup/ssh/
+config/mac_backup/docker/
+config/mac_backup/macos/
+config/mac_backup/git/.gitconfig
+
+config/

@@ -1,0 +1,8 @@
+---
+description: for every command
+globs: 
+alwaysApply: true
+---
+Read [README.md](mdc:README.md) and update it. 
+
+Always keep the flow user friendly. 
