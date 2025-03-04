@@ -37,7 +37,7 @@ confirm() {
 print_header "Restoring Mac Settings from Backup"
 
 # Define backup directory
-backup_dir="config/mac_backup"
+backup_dir="backups/macos"
 
 # Check if backup directory exists
 if [ ! -d "$backup_dir" ]; then
@@ -66,17 +66,17 @@ restore_plist() {
 }
 
 # Restore Dock settings
-restore_plist "com.apple.dock" "$backup_dir/macos/dock.plist"
+restore_plist "com.apple.dock" "$backup_dir/dock.plist"
 
 # Restore Finder settings
-restore_plist "com.apple.finder" "$backup_dir/macos/finder.plist"
+restore_plist "com.apple.finder" "$backup_dir/finder.plist"
 
 # Restore Terminal settings
-restore_plist "com.apple.Terminal" "$backup_dir/macos/terminal.plist"
+restore_plist "com.apple.Terminal" "$backup_dir/terminal.plist"
 
 # Restore iTerm2 settings
-if [ -f "$backup_dir/macos/com.googlecode.iterm2.plist" ]; then
-    cp "$backup_dir/macos/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/" 2>/dev/null
+if [ -f "$backup_dir/com.googlecode.iterm2.plist" ]; then
+    cp "$backup_dir/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/" 2>/dev/null
     if [ $? -eq 0 ]; then
         print_success "Restored iTerm2 preferences"
     else
@@ -85,31 +85,31 @@ if [ -f "$backup_dir/macos/com.googlecode.iterm2.plist" ]; then
 fi
 
 # Restore mouse settings
-restore_plist "com.apple.driver.AppleBluetoothMultitouch.mouse" "$backup_dir/macos/mouse.plist"
+restore_plist "com.apple.driver.AppleBluetoothMultitouch.mouse" "$backup_dir/mouse.plist"
 
 # Restore trackpad settings
-restore_plist "com.apple.driver.AppleBluetoothMultitouch.trackpad" "$backup_dir/macos/trackpad.plist"
-restore_plist "com.apple.AppleMultitouchTrackpad" "$backup_dir/macos/apple_trackpad.plist"
+restore_plist "com.apple.driver.AppleBluetoothMultitouch.trackpad" "$backup_dir/trackpad.plist"
+restore_plist "com.apple.AppleMultitouchTrackpad" "$backup_dir/apple_trackpad.plist"
 
 # Restore keyboard settings
-restore_plist "com.apple.keyboard" "$backup_dir/macos/keyboard.plist"
-restore_plist "com.apple.HIToolbox" "$backup_dir/macos/input_sources.plist"
+restore_plist "com.apple.keyboard" "$backup_dir/keyboard.plist"
+restore_plist "com.apple.HIToolbox" "$backup_dir/input_sources.plist"
 
 # Restore display settings
-restore_plist "com.apple.displays" "$backup_dir/macos/displays.plist"
+restore_plist "com.apple.displays" "$backup_dir/displays.plist"
 
 # Restore sound settings
-restore_plist "com.apple.sound" "$backup_dir/macos/sound.plist"
+restore_plist "com.apple.sound" "$backup_dir/sound.plist"
 
 # Restore accessibility settings
-restore_plist "com.apple.universalaccess" "$backup_dir/macos/accessibility.plist"
+restore_plist "com.apple.universalaccess" "$backup_dir/accessibility.plist"
 
 # Restore system preferences
-restore_plist "com.apple.systempreferences" "$backup_dir/macos/systempreferences.plist"
+restore_plist "com.apple.systempreferences" "$backup_dir/systempreferences.plist"
 
 # Restore global domain settings
-if [ -f "$backup_dir/macos/global_domain/global_domain.plist" ]; then
-    defaults import -g "$backup_dir/macos/global_domain/global_domain.plist" 2>/dev/null
+if [ -f "$backup_dir/global_domain/global_domain.plist" ]; then
+    defaults import -g "$backup_dir/global_domain/global_domain.plist" 2>/dev/null
     if [ $? -eq 0 ]; then
         print_success "Restored global system preferences"
     else
@@ -118,8 +118,8 @@ if [ -f "$backup_dir/macos/global_domain/global_domain.plist" ]; then
 fi
 
 # Restore hosts file (requires sudo)
-if [ -f "$backup_dir/macos/hosts" ] && confirm "Do you want to restore the hosts file? (requires sudo)"; then
-    sudo cp "$backup_dir/macos/hosts" "/etc/hosts" 2>/dev/null
+if [ -f "$backup_dir/hosts" ] && confirm "Do you want to restore the hosts file? (requires sudo)"; then
+    sudo cp "$backup_dir/hosts" "/etc/hosts" 2>/dev/null
     if [ $? -eq 0 ]; then
         print_success "Restored hosts file"
     else

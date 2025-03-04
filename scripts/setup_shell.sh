@@ -75,36 +75,36 @@ if [ -f "$HOME/.zshrc" ]; then
 fi
 
 # Check if we have a backed-up .zshrc in the repository
-if [ -f "config/oh-my-zsh/.zshrc" ]; then
+if [ -f "backups/ohmyzsh/.zshrc" ]; then
     print_info "Found backed-up .zshrc in repository. Using it..."
-    cp "config/oh-my-zsh/.zshrc" "$HOME/.zshrc"
+    cp "backups/ohmyzsh/.zshrc" "$HOME/.zshrc"
     print_success "Restored .zshrc from repository backup."
     
     # Check if we have a backed-up .p10k.zsh in the repository
-    if [ -f "config/oh-my-zsh/.p10k.zsh" ]; then
+    if [ -f "backups/ohmyzsh/.p10k.zsh" ]; then
         print_info "Found backed-up .p10k.zsh in repository. Using it..."
-        cp "config/oh-my-zsh/.p10k.zsh" "$HOME/.p10k.zsh"
+        cp "backups/ohmyzsh/.p10k.zsh" "$HOME/.p10k.zsh"
         print_success "Restored .p10k.zsh from repository backup."
     fi
     
     # Copy any custom themes
-    if [ -d "config/oh-my-zsh/custom/themes" ]; then
+    if [ -d "backups/ohmyzsh/custom/themes" ]; then
         print_info "Copying custom themes from repository..."
-        cp -R "config/oh-my-zsh/custom/themes"/* "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/" 2>/dev/null || true
+        cp -R "backups/ohmyzsh/custom/themes"/* "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/" 2>/dev/null || true
         print_success "Restored custom themes from repository backup."
     fi
     
     # Copy any custom plugins
-    if [ -d "config/oh-my-zsh/custom/plugins" ]; then
+    if [ -d "backups/ohmyzsh/custom/plugins" ]; then
         print_info "Copying custom plugins from repository..."
-        cp -R "config/oh-my-zsh/custom/plugins"/* "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/" 2>/dev/null || true
+        cp -R "backups/ohmyzsh/custom/plugins"/* "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/" 2>/dev/null || true
         print_success "Restored custom plugins from repository backup."
     fi
     
     # Copy any custom .zsh files
-    if [ -d "config/oh-my-zsh/custom" ]; then
+    if [ -d "backups/ohmyzsh/custom" ]; then
         print_info "Copying custom .zsh files from repository..."
-        find "config/oh-my-zsh/custom" -maxdepth 1 -type f -name "*.zsh" -exec cp {} "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/" \; 2>/dev/null || true
+        find "backups/ohmyzsh/custom" -maxdepth 1 -type f -name "*.zsh" -exec cp {} "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/" \; 2>/dev/null || true
         print_success "Restored custom .zsh files from repository backup."
     fi
 # Ask if user wants to import existing Oh My Zsh settings
@@ -239,13 +239,13 @@ if confirm "Do you want to create a backup of your current Oh My Zsh settings fo
     # Backup custom themes and plugins
     if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes" ]; then
         mkdir -p "$backup_dir/themes"
-        cp -R "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes"/* "$backup_dir/themes/"
+        cp -R "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes"/* "$backup_dir/themes"
         print_success "Backed up custom themes to $backup_dir/themes"
     fi
     
     if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins" ]; then
         mkdir -p "$backup_dir/plugins"
-        cp -R "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"/* "$backup_dir/plugins/"
+        cp -R "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"/* "$backup_dir/plugins"
         print_success "Backed up custom plugins to $backup_dir/plugins"
     fi
     
