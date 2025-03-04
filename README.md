@@ -271,22 +271,22 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Example Setup
 
-A basic public backup of Oh My Zsh and other configurations is available in the `sanjeeds-setup` branch. This can serve as a reference for how the backup system works.
+A basic example of configuration files and backups is available in the `example-setup` directory. This can serve as a reference for how the backup and configuration system works.
 
-### Checking Out the Example Setup
+### Using the Example Setup
 
-If you want to see an example of how the backup system works before creating your own:
+If you want to see an example of how the system works before creating your own:
 
 ```bash
-# Clone the repository
-git clone https://github.com/sanjeed5/new-mac-setup.git
-cd new-mac-setup
+# Explore the example-setup directory to see the example configurations and backups
+ls -la example-setup
 
-# Check out the example setup branch
-git checkout sanjeeds-setup
+# You can copy these example files to the main directory structure if you want to use them
+# For example, to use the example configurations:
+cp -r example-setup/config/* config/
 
-# Explore the backups/public directory to see the example configuration
-ls -la backups/public
+# Or to use the example public backups:
+cp -r example-setup/backups/public/* backups/public/
 ```
 
-Note that this example is primarily for reference. The main use case of this repository is still for you to backup and restore your own configurations. The example just provides a starting point to understand how the backup structure works. 
+The example provides a starting point to understand how both the configuration and backup structures work. You can use these files as-is or modify them to suit your needs. 
