@@ -1,0 +1,13 @@
+{
+  "dev.containers.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
+  "editor.accessibilitySupport": "off",
+  "redhat.telemetry.enabled": false,
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
+  "remote.SSH.remotePlatform": {
+    "*.gitpod.io": "linux"
+  }
+}
